@@ -1,0 +1,253 @@
+96;Agents neurotoxiques;Produits chimiques
+4;Carburant à base d'hydrogène;Produits chimiques
+139;Eau;Produits chimiques
+10264;Engrais Rockforth;Produits chimiques
+3;Explosif(s);Produits chimiques
+5;Huile(s) minérale(s);Produits chimiques
+137;Oxygène liquide;Produits chimiques
+138;Peroxyde d'hydrogène;Produits chimiques
+6;Pesticide(s);Produits chimiques
+98;Réactifs synthétiques;Produits chimiques
+97;Stabilisateurs de surface;Produits chimiques
+10268;Traitement agronomique;Produits chimiques
+10269;Tritium;Produits chimiques
+99;Abri d'urgence;Produits de consommation
+8;Électronique grand public;Produits de consommation
+164;Équipement de survie;Produits de consommation
+9;Équipement ménager;Produits de consommation
+7;Vêtements;Produits de consommation
+10;Bière;Drogues légales
+95;Liqueur de contrebande;Drogues légales
+12;Narcotique(s);Drogues légales
+10435;Onionhead Gamma Strain;Drogues légales
+11;Spiritueux;Drogues légales
+13;Tabac;Drogues légales
+14;Vin;Drogues légales
+15;Algue(s);Nourritures
+17;Café(s);Nourritures
+19;Cartouche(s) alimentaire(s);Nourritures
+21;Céréales;Nourritures
+20;Fruits et légumes;Nourritures
+18;Poisson(s);Nourritures
+22;Thé(s);Nourritures
+16;Viande;Nourritures
+23;Viande synthétique;Nourritures
+100;Composés en céramique;Matériaux Industriels
+140;Composite MMC;Matériaux Industriels
+183;Isolant en néotextile;Matériaux Industriels
+141;Membrane isolante;Matériaux Industriels
+101;Méta-alliages;Matériaux Industriels
+26;Polymère(s);Matériaux Industriels
+28;Semi-conducteur(s);Matériaux Industriels
+27;Supraconducteur(s);Matériaux Industriels
+185;Tuyaux de refroidissement;Matériaux Industriels
+102;Auto-bâtisseurs;Machines
+152;Bobine d'émission magnétique;Machines
+158;Cellules d'énergie de secours;Machines
+159;Collecteur d'échappement;Machines
+104;Composants de protecteurs;Machines
+161;Conduits de transfert d'énergie;Machines
+153;Convertisseur d'énergie;Machines
+160;Distributeurs d'ions;Machines
+162;Écran antiradiation;Machines
+86;Équipement aquamarin;Machines
+103;Équipement géologique;Machines
+31;Extracteurs de minerai;Machines
+83;Générateurs;Machines
+85;Hauts fourneaux microbiens;Machines
+151;Interconnexion dissipateur therm.;Machines
+29;Moissonneuses;Machines
+182;Moteurs à articulation;Machines
+163;Plaque de montage renforcée;Machines
+87;Processeurs atmosphériques;Machines
+150;Protection antichocs HP;Machines
+82;Purificateurs d'eau;Machines
+149;Système de réseau d'alimentation;Machines
+181;Terminaux modulaires;Machines
+105;Unités de refroidissement;Machines
+1;Agri-médicament(s);Médicaments
+36;Cellules souches;Médicaments
+33;Médicament(s) simple(s);Médicaments
+166;Médicaments complexes;Médicaments
+35;Produit(s) dopant(s);Médicaments
+34;Stabilisateurs de combat;Médicaments
+37;Aluminium;Métaux
+46;Argent;Métaux
+38;Béryllium;Métaux
+106;Bismuth;Métaux
+39;Cobalt;Métaux
+40;Cuivre;Métaux
+41;Gallium;Métaux
+124;Hafnium&nbsp;178;Métaux
+43;Indium;Métaux
+107;Lanthane;Métaux
+44;Lithium;Métaux
+42;Or;Métaux
+72;Osmium;Métaux
+45;Palladium;Métaux
+81;Platine;Métaux
+143;Praséodyme;Métaux
+142;Samarium;Métaux
+47;Tantale;Métaux
+108;Thallium;Métaux
+109;Thorium;Métaux
+48;Titane;Métaux
+50;Uranium;Métaux
+10249;Alexandrite;Minéraux
+51;Bauxite;Minéraux
+10247;Bénitoïte;Minéraux
+52;Bertrandite;Minéraux
+148;Bromellite;Minéraux
+116;Carbure de silicium;Minéraux
+55;Coltan;Minéraux
+146;Cristaux de méthanol monohydraté;Minéraux
+110;Cryolite;Minéraux
+144;Diamants basse température;Minéraux
+56;Gallite;Minéraux
+111;Goslarite;Minéraux
+10248;Grandidiérite;Minéraux
+145;Hydrate de méthane;Minéraux
+147;Hydroxyde de lithium;Minéraux
+57;Indite;Minéraux
+168;Jadéite;Minéraux
+58;Lépidolite;Minéraux
+10245;Monazite;Minéraux
+10246;Musgravite;Minéraux
+10250;Opale du vide;Minéraux
+84;Painite;Minéraux
+112;Pyrophyllite;Minéraux
+10243;Rhodplumsite;Minéraux
+59;Rutile;Minéraux
+10244;Serendibite;Minéraux
+120;Taafféite;Minéraux
+60;Uraninite;Minéraux
+135;Amulettes porte-bonheur;Récupération
+10270;Anomaly Particles;Récupération
+91;Antiquités;Récupération
+10211;Banque de gènes;Récupération
+10209;Bijoux antiques;Récupération
+122;Boîte noire;Récupération
+10456;Bone Fragments;Récupération
+10212;Capsule temporelle;Récupération
+10226;Capteur thargoid;Récupération
+10439;Caustic Tissue Sample;Récupération
+10166;Centre de données;Récupération
+176;Centre de données instable;Récupération
+10153;Cercueil des Guardians;Récupération
+10240;Clé antique;Récupération
+90;Conteneur fusion SAP&nbsp;8;Récupération
+10451;Coral Sap;Récupération
+172;Correspondance cryptée;Récupération
+10459;Cyst Specimen;Récupération
+10235;Cœur thargoid;Récupération
+10207;Débris d'épave;Récupération
+134;Données commerciales;Récupération
+180;Données tactiques;Récupération
+10239;Échantillon de tissu d'un Hydra thargoid;Récupération
+10236;Échantillon de tissu thargoid - Basilisk;Récupération
+10234;Échantillon de tissu thargoid - Cyclops;Récupération
+10238;Échantillon de tissu thargoid - éclaireur;Récupération
+10237;Échantillon de tissu thargoid - Medusa;Récupération
+170;Échantillons commerciaux;Récupération
+10163;Échantillons de technologie thargoid;Récupération
+174;Échantillons géologiques;Récupération
+179;Échantillons scientifiques;Récupération
+10159;Effets personnels;Récupération
+10255;Fluides de mollusque;Récupération
+10221;Fossiles;Récupération
+10219;Idole mystérieuse;Récupération
+125;Important lot de données d'explorations;Récupération
+10452;Impure Spire Mineral;Récupération
+10161;Liaison thargoid;Récupération
+171;Mallette(s) diplomatique(s);Récupération
+10220;Matériaux de recherches interdits;Récupération
+10160;Matière biologique thargoid;Récupération
+10256;Matière cérébrale de mollusque;Récupération
+10252;Membrane de mollusque;Récupération
+10262;Mésoglée de cosse;Récupération
+10253;Mycélium de mollusque;Récupération
+10215;Nacelle d'évacuation endommagée;Récupération
+129;Nacelle d'évacuation occupée;Récupération
+10154;Orbe des Guardians;Récupération
+10458;Organ Sample;Récupération
+175;Otages;Récupération
+173;Périphérique de stockage crypté;Récupération
+10208;Petit lot de données d'explorations;Récupération
+10165;Pierres précieuses;Récupération
+169;Plans d'assaut;Récupération
+133;Plans industriels;Récupération
+127;Plans militaires;Récupération
+177;Prisonniers politiques;Récupération
+123;Produits chimiques expérimentaux;Récupération
+10449;Protective Membrane Scrap;Récupération
+130;Prototype technologique;Récupération
+178;Recherches scientifiques;Récupération
+89;Reliquats d'IA;Récupération
+121;Relique antique;Récupération
+10155;Relique des Guardians;Récupération
+10210;Reliques de la Terre;Récupération
+10164;Reliques des pionniers de l'espace;Récupération
+126;Renseignements militaires;Récupération
+10162;Résine thargoid;Récupération
+10453;Semi-Refined Spire Mineral;Récupération
+186;Sonde thargoid;Récupération
+10251;Spores de mollusque;Récupération
+10156;Tablette des Guardians;Récupération
+10450;Thargoid Bio-storage Capsule;Récupération
+10441;Thargoid Glaive Tissue Sample;Récupération
+10438;Thargoid Orthrus Tissue Sample;Récupération
+10448;Thargoid Scythe Tissue Sample;Récupération
+10261;Tissu de coque de cosse;Récupération
+10263;Tissu de cosse;Récupération
+10259;Tissu de noyau de cosse;Récupération
+10258;Tissu de surface de cosse;Récupération
+10260;Tissu extérieur de cosse;Récupération
+10257;Tissu mort de cosse;Récupération
+10254;Tissu mou de mollusque;Récupération
+10442;Titan Deep Tissue Sample;Récupération
+10457;Titan Drive Component;Récupération
+10445;Titan Maw Deep Tissue Sample;Récupération
+10446;Titan Maw Partial Tissue Sample;Récupération
+10447;Titan Maw Tissue Sample;Récupération
+10444;Titan Partial Tissue Sample;Récupération
+10443;Titan Tissue Sample;Récupération
+10157;Totem des Guardians;Récupération
+132;Transmissions rebelles;Récupération
+10437;Unclassified Relic;Récupération
+10167;Unité de confinement d'antimatière;Récupération
+10440;Unoccupied Escape Pod;Récupération
+10158;Urne des Guardians;Récupération
+131;Œuvre d'art;Récupération
+53;Esclaves;Esclaves
+49;Esclaves impériaux;Esclaves
+155;Capteur diagnostic d'équipement;Technologie
+61;Catalyseurs complexes;Technologie
+68;Combinaisons de protection;Technologie
+67;Composants d'Ordinateur;Technologie
+119;Dispositif d'imagerie muonique;Technologie
+65;Dispositifs d'autofabrication;Technologie
+154;Équipement de diagnostic médical;Technologie
+66;Lichen bioréducteur;Technologie
+156;Microcontrôleurs;Technologie
+167;Nanodestructeurs;Technologie
+117;Régulateur(s) structurel(s);Technologie
+70;Robots;Technologie
+69;Séparateurs à résonance;Technologie
+71;Sys. enrichissement sols;Technologie
+62;Sys. surveillance animale;Technologie
+184;Système de télémétrie;Technologie
+63;Systèmes aquaponiques;Technologie
+73;Cuir;Textiles
+74;Fibre(s) textile(s) naturelle(s);Textiles
+75;Tissu(s) synthétique(s);Textiles
+165;Tissus conducteurs;Textiles
+157;Tissus militaires;Textiles
+76;Biodéchets;Déchets
+32;Déchets chimiques;Déchets
+54;Déchets toxiques;Déchets
+77;Ferraille;Déchets
+79;Armes de poing;Armes
+78;Armes incapacitantes;Armes
+88;Armes militaires;Armes
+118;Mines terrestres;Armes
+80;Protection réactive;Armes
