@@ -1,0 +1,253 @@
+10268;Agronomic Treatment;Chemicals
+3;Explosives;Chemicals
+4;Hydrogen Fuel;Chemicals
+138;Hydrogen Peroxide;Chemicals
+137;Liquid oxygen;Chemicals
+5;Mineral Oil;Chemicals
+96;Nerve Agents;Chemicals
+6;Pesticides;Chemicals
+10264;Rockforth Fertiliser;Chemicals
+97;Surface Stabilisers;Chemicals
+98;Synthetic Reagents;Chemicals
+10269;Tritium;Chemicals
+139;Water;Chemicals
+7;Clothing;Consumer Items
+8;Consumer Technology;Consumer Items
+9;Domestic Appliances;Consumer Items
+99;Evacuation Shelter;Consumer Items
+164;Survival Equipment;Consumer Items
+10;Beer;Legal Drugs
+95;Bootleg Liquor;Legal Drugs
+11;Liquor;Legal Drugs
+12;Narcotics;Legal Drugs
+10435;Onionhead Gamma Strain;Legal Drugs
+13;Tobacco;Legal Drugs
+14;Wine;Legal Drugs
+15;Algae;Foods
+16;Animal Meat;Foods
+17;Coffee;Foods
+18;Fish;Foods
+19;Food Cartridges;Foods
+20;Fruit and Vegetables;Foods
+21;Grain;Foods
+23;Synthetic Meat;Foods
+22;Tea;Foods
+100;Ceramic Composites;Industrial Materials
+140;CMM Composite;Industrial Materials
+141;Insulating Membrane;Industrial Materials
+101;Meta-Alloys;Industrial Materials
+185;Micro-weave Cooling Hoses;Industrial Materials
+183;Neofabric Insulation;Industrial Materials
+26;Polymers;Industrial Materials
+28;Semiconductors;Industrial Materials
+27;Superconductors;Industrial Materials
+182;Articulation Motors;Machinery
+87;Atmospheric Processors;Machinery
+102;Building Fabricators;Machinery
+29;Crop Harvesters;Machinery
+158;Emergency Power Cells;Machinery
+149;Energy Grid Assembly;Machinery
+159;Exhaust Manifold;Machinery
+103;Geological Equipment;Machinery
+151;Heatsink Interlink;Machinery
+150;HN Shock Mount;Machinery
+160;Ion Distributor;Machinery
+152;Magnetic Emitter Coil;Machinery
+86;Marine Equipment;Machinery
+85;Microbial Furnaces;Machinery
+31;Mineral Extractors;Machinery
+181;Modular Terminals;Machinery
+153;Power Converter;Machinery
+83;Power Generators;Machinery
+161;Power Transfer Bus;Machinery
+162;Radiation Baffle;Machinery
+163;Reinforced Mounting Plate;Machinery
+104;Skimmer Components;Machinery
+105;Thermal Cooling Units;Machinery
+82;Water Purifiers;Machinery
+166;Advanced Medicines;Medicines
+1;Agri-Medicines;Medicines
+33;Basic Medicines;Medicines
+34;Combat Stabilisers;Medicines
+35;Performance Enhancers;Medicines
+36;Progenitor Cells;Medicines
+37;Aluminium;Metals
+38;Beryllium;Metals
+106;Bismuth;Metals
+39;Cobalt;Metals
+40;Copper;Metals
+41;Gallium;Metals
+42;Gold;Metals
+124;Hafnium 178;Metals
+43;Indium;Metals
+107;Lanthanum;Metals
+44;Lithium;Metals
+72;Osmium;Metals
+45;Palladium;Metals
+81;Platinum;Metals
+143;Praseodymium;Metals
+142;Samarium;Metals
+46;Silver;Metals
+47;Tantalum;Metals
+108;Thallium;Metals
+109;Thorium;Metals
+48;Titanium;Metals
+50;Uranium;Metals
+10249;Alexandrite;Minerals
+51;Bauxite;Minerals
+10247;Benitoite;Minerals
+52;Bertrandite;Minerals
+148;Bromellite;Minerals
+55;Coltan;Minerals
+110;Cryolite;Minerals
+56;Gallite;Minerals
+111;Goslarite;Minerals
+10248;Grandidierite;Minerals
+57;Indite;Minerals
+168;Jadeite;Minerals
+58;Lepidolite;Minerals
+147;Lithium Hydroxide;Minerals
+144;Low Temperature Diamonds;Minerals
+145;Methane Clathrate;Minerals
+146;Methanol Monohydrate Crystals;Minerals
+116;Moissanite;Minerals
+10245;Monazite;Minerals
+10246;Musgravite;Minerals
+84;Painite;Minerals
+112;Pyrophyllite;Minerals
+10243;Rhodplumsite;Minerals
+59;Rutile;Minerals
+10244;Serendibite;Minerals
+120;Taaffeite;Minerals
+60;Uraninite;Minerals
+10250;Void Opal;Minerals
+89;AI Relics;Salvage
+121;Ancient Artefact;Salvage
+10240;Ancient Key;Salvage
+10270;Anomaly Particles;Salvage
+10167;Antimatter Containment Unit;Salvage
+10209;Antique Jewellery;Salvage
+91;Antiquities;Salvage
+169;Assault Plans;Salvage
+122;Black Box;Salvage
+10456;Bone Fragments;Salvage
+10439;Caustic Tissue Sample;Salvage
+170;Commercial Samples;Salvage
+10451;Coral Sap;Salvage
+10459;Cyst Specimen;Salvage
+10215;Damaged Escape Pod;Salvage
+10166;Data Core;Salvage
+171;Diplomatic Bag;Salvage
+10210;Earth Relics;Salvage
+172;Encrypted Correspondence;Salvage
+173;Encrypted Data Storage;Salvage
+123;Experimental Chemicals;Salvage
+10221;Fossil Remnants;Salvage
+10211;Gene Bank;Salvage
+174;Geological Samples;Salvage
+10153;Guardian Casket;Salvage
+10154;Guardian Orb;Salvage
+10155;Guardian Relic;Salvage
+10156;Guardian Tablet;Salvage
+10157;Guardian Totem;Salvage
+10158;Guardian Urn;Salvage
+175;Hostages;Salvage
+10452;Impure Spire Mineral;Salvage
+125;Large Survey Data Cache;Salvage
+126;Military Intelligence;Salvage
+127;Military Plans;Salvage
+10256;Mollusc Brain Tissue;Salvage
+10255;Mollusc Fluid;Salvage
+10252;Mollusc Membrane;Salvage
+10253;Mollusc Mycelium;Salvage
+10254;Mollusc Soft Tissue;Salvage
+10251;Mollusc Spores;Salvage
+10219;Mysterious Idol;Salvage
+129;Occupied Escape Pod;Salvage
+10458;Organ Sample;Salvage
+10159;Personal Effects;Salvage
+10259;Pod Core Tissue;Salvage
+10257;Pod Dead Tissue;Salvage
+10262;Pod Mesoglea;Salvage
+10260;Pod Outer Tissue;Salvage
+10261;Pod Shell Tissue;Salvage
+10258;Pod Surface Tissue;Salvage
+10263;Pod Tissue;Salvage
+177;Political Prisoners;Salvage
+10165;Precious Gems;Salvage
+10220;Prohibited Research Materials;Salvage
+10449;Protective Membrane Scrap;Salvage
+130;Prototype Tech;Salvage
+131;Rare Artwork;Salvage
+132;Rebel Transmissions;Salvage
+90;SAP 8 Core Container;Salvage
+178;Scientific Research;Salvage
+179;Scientific Samples;Salvage
+10453;Semi-Refined Spire Mineral;Salvage
+10208;Small Survey Data Cache;Salvage
+10164;Space Pioneer Relics;Salvage
+180;Tactical Data;Salvage
+133;Technical Blueprints;Salvage
+10236;Thargoid Basilisk Tissue Sample;Salvage
+10450;Thargoid Bio-storage Capsule;Salvage
+10160;Thargoid Biological Matter;Salvage
+10234;Thargoid Cyclops Tissue Sample;Salvage
+10441;Thargoid Glaive Tissue Sample;Salvage
+10235;Thargoid Heart;Salvage
+10239;Thargoid Hydra Tissue Sample;Salvage
+10161;Thargoid Link;Salvage
+10237;Thargoid Medusa Tissue Sample;Salvage
+10438;Thargoid Orthrus Tissue Sample;Salvage
+186;Thargoid Probe;Salvage
+10162;Thargoid Resin;Salvage
+10238;Thargoid Scout Tissue Sample;Salvage
+10448;Thargoid Scythe Tissue Sample;Salvage
+10226;Thargoid Sensor;Salvage
+10163;Thargoid Technology Samples;Salvage
+10212;Time Capsule;Salvage
+10442;Titan Deep Tissue Sample;Salvage
+10457;Titan Drive Component;Salvage
+10445;Titan Maw Deep Tissue Sample;Salvage
+10446;Titan Maw Partial Tissue Sample;Salvage
+10447;Titan Maw Tissue Sample;Salvage
+10444;Titan Partial Tissue Sample;Salvage
+10443;Titan Tissue Sample;Salvage
+134;Trade Data;Salvage
+135;Trinkets of Hidden Fortune;Salvage
+10437;Unclassified Relic;Salvage
+10440;Unoccupied Escape Pod;Salvage
+176;Unstable Data Core;Salvage
+10207;Wreckage Components;Salvage
+49;Imperial Slaves;Slaves
+53;Slaves;Slaves
+61;Advanced Catalysers;Technology
+62;Animal Monitors;Technology
+63;Aquaponic Systems;Technology
+65;Auto-Fabricators;Technology
+66;Bioreducing Lichen;Technology
+67;Computer Components;Technology
+68;H.E. Suits;Technology
+155;Hardware Diagnostic Sensor;Technology
+71;Land Enrichment Systems;Technology
+154;Medical Diagnostic Equipment;Technology
+156;Micro Controllers;Technology
+119;Muon Imager;Technology
+167;Nanobreakers;Technology
+69;Resonating Separators;Technology
+70;Robotics;Technology
+117;Structural Regulators;Technology
+184;Telemetry Suite;Technology
+165;Conductive Fabrics;Textiles
+73;Leather;Textiles
+157;Military Grade Fabrics;Textiles
+74;Natural Fabrics;Textiles
+75;Synthetic Fabrics;Textiles
+76;Biowaste;Waste
+32;Chemical Waste;Waste
+77;Scrap;Waste
+54;Toxic Waste;Waste
+88;Battle Weapons;Weapons
+118;Landmines;Weapons
+78;Non-Lethal Weapons;Weapons
+79;Personal Weapons;Weapons
+80;Reactive Armour;Weapons

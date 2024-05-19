@@ -5,6 +5,45 @@
              x:Class="EDCommoditiesRoute.App">
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary>
+                <Color x:Key="EDCR_Text">Orange</Color>
+                <Color x:Key="EDCR_Stroke">Orange</Color>
+                <Color x:Key="EDCR_Background">Black</Color>
+                <x:Double x:Key="EDCR_TitrePage">30</x:Double>
+                <x:Double x:Key="EDCR_TailleZoneSaisie">20</x:Double>
+                <x:Double x:Key="EDCR_TailleNormale">17</x:Double>
+                <x:Double x:Key="EDCR_TailleTitreBouton">30</x:Double>
+                <DataTemplate x:Key="GenericListStartSwipeTemplate">
+                    <Grid>
+                        <Grid BackgroundColor="{StaticResource GraleVert}" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Column="0">
+                            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                                <Image  Grid.Column="0"
+                       Grid.Row="0"
+                       BackgroundColor="{StaticResource GraleVert}"
+                       HeightRequest="35"
+                       WidthRequest="35"
+                       Source="edition.svg"
+                       />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate x:Key="GenericListEndSwipeTemplate">
+                    <Grid>
+                        <Grid BackgroundColor="{StaticResource GraleRouge}" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Column="0">
+                            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                                <Image  Grid.Column="0"
+                       Grid.Row="0"
+                       BackgroundColor="{StaticResource GraleRouge}"
+                       HeightRequest="35"
+                       WidthRequest="35"
+                       Source="supprimer.svg"
+                       />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
