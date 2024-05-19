@@ -28,103 +28,110 @@ namespace InaraHelper
         /// <returns></returns>
         public static async Task GetCommodities(String initialSystem, CommodityInfo commodityInfo)
         {
-
-            // If the commodity exist, delete it
-            if (StationsCommodities.ContainsKey(commodityInfo.Libelle))
+            try
             {
-                StationsCommodities[commodityInfo.Libelle].Clear();
-            }
-            else
-            {
-                StationsCommodities.Add(commodityInfo.Libelle, new List<InaraCommodityInfo>());
-            }
 
-            _header = $"https://inara.cz/elite/commodities/?pi1=1&pa1%5B%5D={commodityInfo.Numero}&ps1=Volkhabe&pi10=3&pi11=0&pi3=2&pi9=0&pi4=1&pi5=0&pi12=0&pi7=0&pi8=1";
-
-            HttpResponseMessage response;
-            string responseBody;
-            string query = string.Empty;
-            response = Client.GetAsync($"{_header}").Result;
-            response.EnsureSuccessStatusCode();
-            responseBody = await response.Content.ReadAsStringAsync();
-
-            // From String
-            HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(responseBody);
-
-            IEnumerable<HtmlNode> nodes = doc.DocumentNode.Descendants().Where(n => n.HasClass("maincontent1"));
-
-
-            var tableRuntime = nodes.FirstOrDefault()?.SelectSingleNode("//table");
-            var HTMLTableTRList = from table in doc.DocumentNode.SelectNodes("//table").Cast<HtmlNode>()
-                                  from row in table.SelectNodes("//tr").Cast<HtmlNode>()
-                                  from cell in row.SelectNodes("th|td").Cast<HtmlNode>()
-                                  select new { Table_Name = table.Id, Cell_Text = cell.InnerText };
-
-            Int32 price = 0;
-            Double doubleValue = 0;
-            InaraCommodityInfo cv;
-            Int32 j;
-            String CommodityFamily = "";
-            String[] infos;
-            String temp;
-            for (int i = 7; i < HTMLTableTRList.Count(); i = i + 7)
-            {
-                cv = new InaraCommodityInfo();
-                if (HTMLTableTRList.ElementAt(i).Cell_Text == String.Empty)
+                // If the commodity exist, delete it
+                if (StationsCommodities.ContainsKey(commodityInfo.Libelle))
                 {
-                    i++;
+                    StationsCommodities[commodityInfo.Libelle].Clear();
                 }
                 else
                 {
-                    cv.Location = HTMLTableTRList.ElementAt(i).Cell_Text.ToUpper();
-                    infos = cv.Location.Split('|');
-                    cv.Station = infos[0].Trim();
-                    cv.System = infos[1].Trim();
+                    StationsCommodities.Add(commodityInfo.Libelle, new List<InaraCommodityInfo>());
                 }
 
-                j = i + 1;
-                cv.Pad = HTMLTableTRList.ElementAt(j).Cell_Text.Trim();
+                _header = $"https://inara.cz/elite/commodities/?pi1=1&pa1%5B%5D={commodityInfo.Numero}&ps1=Volkhabe&pi10=3&pi11=0&pi3=2&pi9=0&pi4=1&pi5=0&pi12=0&pi7=0&pi8=1";
 
-                j++;
-                if (Double.TryParse(HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0], out doubleValue))
-                    cv.DistanceStation = doubleValue;
+                HttpResponseMessage response;
+                string responseBody;
+                string query = string.Empty;
+                response = Client.GetAsync($"{_header}").Result;
+                response.EnsureSuccessStatusCode();
+                responseBody = await response.Content.ReadAsStringAsync();
 
-                j++;
-                if (Double.TryParse(HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0].Replace(".", ","), out doubleValue))
-                    cv.DistanceSystem = doubleValue;
+                // From String
+                HtmlDocument doc = new HtmlDocument();
+                doc.LoadHtml(responseBody);
 
-                j++;
-                if (Int32.TryParse(HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0].Replace(",", String.Empty),
-                    out price))
+                IEnumerable<HtmlNode> nodes = doc.DocumentNode.Descendants().Where(n => n.HasClass("maincontent1"));
+
+
+                var tableRuntime = nodes.FirstOrDefault()?.SelectSingleNode("//table");
+                var HTMLTableTRList = from table in doc.DocumentNode.SelectNodes("//table").Cast<HtmlNode>()
+                                      from row in table.SelectNodes("//tr").Cast<HtmlNode>()
+                                      from cell in row.SelectNodes("th|td").Cast<HtmlNode>()
+                                      select new { Table_Name = table.Id, Cell_Text = cell.InnerText };
+
+                Int32 price = 0;
+                Double doubleValue = 0;
+                InaraCommodityInfo cv;
+                Int32 j;
+                String CommodityFamily = "";
+                String[] infos;
+                String temp;
+                for (int i = 7; i < HTMLTableTRList.Count(); i = i + 7)
                 {
-                    cv.Supply = price;
-                }
-                else
-                {
-                    temp = String.Empty;
-                    foreach (Char item in HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0])
+                    cv = new InaraCommodityInfo();
+                    if (HTMLTableTRList.ElementAt(i).Cell_Text == String.Empty)
                     {
-                        if (item >= '0' && item <= '9')
-                        {
-                            temp += item;
-                        }
+                        i++;
                     }
-                    if (Int32.TryParse(temp, out price))
+                    else
+                    {
+                        cv.Location = HTMLTableTRList.ElementAt(i).Cell_Text.ToUpper();
+                        infos = cv.Location.Split('|');
+                        cv.Station = infos[0].Trim();
+                        cv.System = infos[1].Trim();
+                    }
+
+                    j = i + 1;
+                    cv.Pad = HTMLTableTRList.ElementAt(j).Cell_Text.Trim();
+
+                    j++;
+                    if (Double.TryParse(HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0], out doubleValue))
+                        cv.DistanceStation = doubleValue;
+
+                    j++;
+                    if (Double.TryParse(HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0].Replace(".", ","), out doubleValue))
+                        cv.DistanceSystem = doubleValue;
+
+                    j++;
+                    if (Int32.TryParse(HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0].Replace(",", String.Empty),
+                        out price))
                     {
                         cv.Supply = price;
                     }
+                    else
+                    {
+                        temp = String.Empty;
+                        foreach (Char item in HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0])
+                        {
+                            if (item >= '0' && item <= '9')
+                            {
+                                temp += item;
+                            }
+                        }
+                        if (Int32.TryParse(temp, out price))
+                        {
+                            cv.Supply = price;
+                        }
+                    }
+
+                    j++;
+                    if (Int32.TryParse(HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0].Replace(",", String.Empty),
+                        out price))
+                        cv.Price = price;
+
+                    j++;
+                    cv.Updated = HTMLTableTRList.ElementAt(j).Cell_Text.Trim();
+
+                    StationsCommodities[commodityInfo.Libelle].Add(cv);
                 }
-
-                j++;
-                if (Int32.TryParse(HTMLTableTRList.ElementAt(j).Cell_Text.Split(' ')[0].Replace(",", String.Empty),
-                    out price))
-                    cv.Price = price;
-
-                j++;
-                cv.Updated = HTMLTableTRList.ElementAt(j).Cell_Text.Trim();
-
-                StationsCommodities[commodityInfo.Libelle].Add(cv);
+            }
+            catch (Exception)
+            {
+                // this catch is blank intentionaly. Some commodities are not sell at all
             }
         }
 

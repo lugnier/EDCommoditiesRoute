@@ -85,6 +85,8 @@ namespace EDCommoditiesRoute.ViewModels
         [RelayCommand]
         public async void LaunchResearch(object p)
         {
+            InaraHelper.InaraHelper.StationsCommodities.Clear();
+
             // récupération des sélections
             foreach (CommodityInfo item in SelectedCommodityInfoList)
             {
