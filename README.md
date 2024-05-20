@@ -6,3 +6,4 @@ ED_CommoditiesRoute va rechercher les stations contenant le plus de type de marc
 - la station de départ
 
 ED_CommoditiesRoute ne calcule pas dans cette version l'ordre de visite des stations
+ED_CommoditiesRoute se base sur les informations remontées par Inara.
