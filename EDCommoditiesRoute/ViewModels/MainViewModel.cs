@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using EDCommoditiesRoute.Models;
 using InaraHelper;
+using Syncfusion.Maui.Sliders;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -45,6 +46,12 @@ namespace EDCommoditiesRoute.ViewModels
         [ObservableProperty]
         public String launchButtonLibelle;
 
+        [ObservableProperty]
+        public String minCommoditiesHint;
+
+        [ObservableProperty]
+        public Int32 minCommoditiesValue;
+
         #endregion
 
         #region PROPERTIES
@@ -75,6 +82,8 @@ namespace EDCommoditiesRoute.ViewModels
             CommodityInfoList = new ObservableCollection<CommodityInfo>();
             selectedCommodityInfoList = new();
 
+            MinCommoditiesValue = 100;
+
             LoadCommodities();
 
         }
@@ -96,6 +105,27 @@ namespace EDCommoditiesRoute.ViewModels
             LaunchCalculus();
         }
 
+        [RelayCommand]
+        public void SliderMinCommodities(object p)
+        {
+            if (p is SliderValueChangedEventArgs)
+            {
+                var r2 = p as SliderValueChangedEventArgs;
+                if (r2 != null)
+                {
+                    if (r2.NewValue == 0)
+                    {
+                        MinCommoditiesHint = $"Minimum : Aucun";
+                    }
+                    else
+                    {
+                        MinCommoditiesHint = $"Minimum : {r2.NewValue}";
+                    }
+                }
+
+            }
+        }
+
         private void LaunchCalculus()
         {
             // list all commodities
@@ -109,9 +139,8 @@ namespace EDCommoditiesRoute.ViewModels
                 {
                     // if the station is not in the list, we add it
                     // stationsCommodity.Key : commodity
-                    if (CommodityInfoList.Any(x => x.Libelle == stationsCommodity.Key))
+                    if (CommodityInfoList.Any(x => x.Libelle == stationsCommodity.Key) && inaraCommodityInfo.Supply >= MinCommoditiesValue )
                     {
-
                         if (!commoditiesByStations.ContainsKey(inaraCommodityInfo.Location))
                         {
                             commoditiesByStations.Add(inaraCommodityInfo.Location, new() { CommodityInfoList.First(x => x.Libelle == stationsCommodity.Key) });

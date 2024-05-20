@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:helpers="clr-namespace:EDCommodities.Helpers"
              xmlns:sfbuttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:sfcore="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:sfinputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:sfsliders="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
              xmlns:viewmodels="clr-namespace:EDCommoditiesRoute.ViewModels"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EDCommoditiesRoute.Views.MainPage"
@@ -52,10 +54,12 @@
                    FontSize="20"/>
         </sfcore:SfTextInputLayout>
 
-        <!--CHOIX DES COMMODITES ET CHIPS-->
-        <Rectangle Stroke="{StaticResource EDCR_Stroke}" 
+        <!--CHOOSE COMMODITES WITH TAGS-->
+        
+        <!--RECTANGLE AND LABEL TO DEAL SYNCFUSION GROUPBOX PROBLEM-->
+        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                   Stroke="{StaticResource EDCR_Stroke}" 
                    Margin="10,5"
-                   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
                    RadiusX="5" RadiusY="5"/>
         <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
                Text="{Binding CommoditiesListHint}"
@@ -89,7 +93,40 @@
             </sfinputs:SfComboBox.TokenItemStyle>
         </sfinputs:SfComboBox>
         
-        
+        <!--MIN COMMODITIES NUMBER ON A STATION-->
+        <Rectangle Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="1"
+                   Stroke="{StaticResource EDCR_Stroke}" 
+                   Margin="10,5"
+                   RadiusX="5" RadiusY="5"/>
+        <Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="1"
+               Text="{Binding MinCommoditiesHint}"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               TextColor="{StaticResource EDCR_Text}"
+               BackgroundColor="#202020"
+               Margin="20,-6,0,0"/>
+        <sfsliders:SfSlider Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="1"
+                            Minimum="0" Maximum="2000" Interval="100" StepSize="100"
+                            Margin="10,0"
+                            Value="{Binding MinCommoditiesValue}">
+            <sfsliders:SfSlider.Behaviors>
+                <helpers:EventToCommandBehavior EventName="ValueChanged" Command="{Binding SliderMinCommoditiesCommand}"/>
+            </sfsliders:SfSlider.Behaviors>
+            <sfsliders:SfSlider.TrackStyle>
+                <sfsliders:SliderTrackStyle ActiveFill="{StaticResource EDCR_Stroke}"
+                                  InactiveFill="{StaticResource EDCR_Stroke}" />
+            </sfsliders:SfSlider.TrackStyle>
+            <sfsliders:SfSlider.ThumbStyle>
+                <sfsliders:SliderThumbStyle Fill="{StaticResource EDCR_Stroke}"
+                                            Stroke="{StaticResource EDCR_Stroke}"
+                                            StrokeThickness="1"/>
+            </sfsliders:SfSlider.ThumbStyle>
+            <sfsliders:SfSlider.ThumbOverlayStyle>
+                <sfsliders:SliderThumbOverlayStyle Radius="18"
+                                                   Fill="{StaticResource EDCR_Stroke}"/>
+            </sfsliders:SfSlider.ThumbOverlayStyle>
+        </sfsliders:SfSlider>
+                            
 
 
         <!--ANCIEN COMBO CHIPS CYCLING REF COMMODITIES-->
