@@ -80,6 +80,7 @@ namespace InaraHelper
                     else
                     {
                         cv.Location = HTMLTableTRList.ElementAt(i).Cell_Text.ToUpper();
+                        cv.Location = RemoveSpecialCaracters(cv.Location);
                         infos = cv.Location.Split('|');
                         cv.Station = infos[0].Trim();
                         cv.System = infos[1].Trim();
@@ -128,11 +129,31 @@ namespace InaraHelper
 
                     StationsCommodities[commodityInfo.Libelle].Add(cv);
                 }
+
+                
             }
             catch (Exception)
             {
                 // this catch is blank intentionaly. Some commodities are not sell at all
             }
+        }
+
+        private static string RemoveSpecialCaracters(string location)
+        {
+            String temp = String.Empty;
+            foreach (Char item in location)
+            {
+                if (
+                    (item >= '0' && item <= '9') 
+                    || (item >='a' && item <='z') 
+                    || (item >= 'A' && item <= 'Z') 
+                    || item == '|' 
+                    || item == ' ')
+                {
+                    temp += item;
+                }
+            }
+            return temp;
         }
 
         /// <summary>

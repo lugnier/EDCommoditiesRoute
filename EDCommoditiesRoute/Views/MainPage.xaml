@@ -3,35 +3,60 @@
              xmlns:helpers="clr-namespace:EDCommodities.Helpers"
              xmlns:sfbuttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:sfcore="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:sfdatagrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:sftreeview="clr-namespace:Syncfusion.Maui.TreeView;assembly=Syncfusion.Maui.TreeView"
              xmlns:sfinputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:sfsliders="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
+             xmlns:treeviewengine="clr-namespace:Syncfusion.TreeView.Engine;assembly=Syncfusion.Maui.TreeView"
              xmlns:viewmodels="clr-namespace:EDCommoditiesRoute.ViewModels"
+             xmlns:toto="clr-namespace:Toto"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EDCommoditiesRoute.Views.MainPage"
              Shell.TitleColor="{StaticResource EDCR_Text}"
-             Title="{Binding Titre}"
+             Title="{Binding Title}"
              >
 
     <ContentPage.BindingContext>
         <viewmodels:MainViewModel x:Name="MainViewModel"/>
     </ContentPage.BindingContext>
 
+    <ContentPage.Resources>
+        <DataTemplate x:Key="Template1">
+            <Grid Padding="5,0,0,0">
+                <Label Text="{Binding ItemName}" TextColor="{StaticResource EDCR_Text}"
+           VerticalTextAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="Template2">
+            <Grid Padding="5,0,0,0">
+                <Label Text="{Binding Libelle}" TextColor="{StaticResource EDCR_Text}"
+VerticalTextAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <toto:CommoditiesByStationsTreeViewDataTemplateSelector x:Key="CommoditiesByStationsTreeViewDataTemplateSelector"
+                                                                    Level0="{StaticResource Template1}"
+                                                                    Level1="{StaticResource Template2}"
+                                                                       />
+    </ContentPage.Resources>
 
 
     <Grid ColumnDefinitions="*,*,*,*,*">
 
         <Grid.RowDefinitions>
+            <!-- 0 UNUSED-->
             <RowDefinition Height="Auto"/>
+            <!-- 1 STARTING SYSTEM-->
             <RowDefinition Height="Auto"/>
+            <!-- 2 OPTIONS-->
             <RowDefinition Height="Auto"/>
+            <!--3 COMMODITIES AND LAUNCH-->
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <!--4 RESULTS-->
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!--SYSTEM DE DEPART-->
+        <!--STARTING SYSTEM-->
         <sfcore:SfTextInputLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" 
                                          Hint="{Binding StartingSystemHint}"
                                          ContainerType="Outlined"
@@ -54,50 +79,12 @@
                    FontSize="20"/>
         </sfcore:SfTextInputLayout>
 
-        <!--CHOOSE COMMODITES WITH TAGS-->
-        
-        <!--RECTANGLE AND LABEL TO DEAL SYNCFUSION GROUPBOX PROBLEM-->
-        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-                   Stroke="{StaticResource EDCR_Stroke}" 
-                   Margin="10,5"
-                   RadiusX="5" RadiusY="5"/>
-        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-               Text="{Binding CommoditiesListHint}"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               TextColor="{StaticResource EDCR_Text}"
-               BackgroundColor="#202020"
-               Margin="20,-6,0,0"/>
-        <sfinputs:SfComboBox x:Name="SfComboBoxCommodities" 
-                             ItemsSource="{Binding CommodityInfoList}"
-                                 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-                                 DisplayMemberPath="Libelle"
-                                 TextMemberPath="Libelle"
-                                 TokensWrapMode="Wrap"
-                                 SelectionMode="Multiple"
-                                 EnableAutoSize="True"
-                                 BackgroundColor="{StaticResource EDCR_Background}"
-                                 Margin="20"
-                             >
-                             <!--SelectionChanged="SfComboBox_SelectionChanged"-->
-            <sfinputs:SfComboBox.TokenItemStyle>
-                <Style TargetType="sfcore:SfChipGroup">
-                    <Setter Property="ChipTextColor" Value="{StaticResource EDCR_Stroke}"/>
-                    <Setter Property="ChipFontAttributes" Value="Bold"/>
-                    <Setter Property="CloseButtonColor" Value="{StaticResource EDCR_Stroke}"/>
-                    <Setter Property="ChipBackground" Value="{StaticResource EDCR_Background}"/>
-                    <Setter Property="ChipStroke" Value="{StaticResource EDCR_Stroke}"/>
-                    <Setter Property="ChipStrokeThickness" Value="6"/>
-                    <Setter Property="ChipCornerRadius" Value="5"/>
-                </Style>
-            </sfinputs:SfComboBox.TokenItemStyle>
-        </sfinputs:SfComboBox>
-        
         <!--MIN COMMODITIES NUMBER ON A STATION-->
         <Rectangle Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="1"
                    Stroke="{StaticResource EDCR_Stroke}" 
                    Margin="10,5"
-                   RadiusX="5" RadiusY="5"/>
+                   RadiusX="5" RadiusY="5"
+                   HeightRequest="50"/>
         <Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="1"
                Text="{Binding MinCommoditiesHint}"
                VerticalOptions="Start"
@@ -126,21 +113,21 @@
                                                    Fill="{StaticResource EDCR_Stroke}"/>
             </sfsliders:SfSlider.ThumbOverlayStyle>
         </sfsliders:SfSlider>
-                            
 
 
-        <!--ANCIEN COMBO CHIPS CYCLING REF COMMODITIES-->
-        <!--<sfcore:SfTextInputLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" 
-                                         Hint="{Binding CommoditiesListHint}"
-                                         ContainerType="Outlined"
-                                         HelperText="{Binding CommoditiesListHelperText}"
-                                         ShowHelperText="False"
-                                         IsHintAlwaysFloated="True"
-                                         ContainerBackground="Black"
-                                         Stroke="{StaticResource EDCR_Stroke}"
-                                         InputViewPadding="20,0,20,0"
-                                         Margin="10,0"
-                                         >
+        <!--SUPPLY OR X-->
+        <sfcore:SfTextInputLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1"
+                                 Hint="{Binding GridCellXOrSupplyHint}"
+                                  
+                                 ContainerType="Outlined"
+                                 HelperText="{Binding GridCellXOrSupplyHint}"
+                                 ShowHelperText="False"
+                                 IsHintAlwaysFloated="True"
+                                 ContainerBackground="Black"
+                                 Stroke="{StaticResource EDCR_Stroke}"
+                                 InputViewPadding="20,0,20,0"
+                                 Margin="10,0" HeightRequest="80"
+                                 >
             <sfcore:SfTextInputLayout.HintLabelStyle>
                 <sfcore:LabelStyle TextColor="{StaticResource EDCR_Text}"/>
             </sfcore:SfTextInputLayout.HintLabelStyle>
@@ -148,41 +135,137 @@
                 <sfcore:LabelStyle TextColor="{StaticResource EDCR_Text}"/>
             </sfcore:SfTextInputLayout.HelperLabelStyle>
 
-            <sfinputs:SfComboBox TextColor="{StaticResource EDCR_Text}"
+            <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="{Binding GridCellXOrSupplyTextX}"
+                       VerticalOptions="Center"
+                       Margin="10,0"
+                       TextColor="{StaticResource EDCR_Text}"
+                       FontSize="15"/>
+                <sfbuttons:SfSwitch IsOn="{Binding GridCellXOrSupplyIsSupply}"
+                               AllowIndeterminateState="False">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup  x:Name="CommonStates">
+                            <VisualState x:Name="On">
+                                <VisualState.Setters>
+                                    <Setter Property="SwitchSettings">
+                                        <Setter.Value>
+                                            <sfbuttons:SwitchSettings
+                                ThumbBackground="{StaticResource EDCR_Stroke}"
+                                ThumbStroke="{StaticResource EDCR_Stroke}"
+                                TrackBackground="{StaticResource EDCR_Background}"
+                                TrackStroke="{StaticResource EDCR_Stroke}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Off">
+                                <VisualState.Setters>
+                                    <Setter Property="SwitchSettings">
+                                        <Setter.Value>
+                                            <sfbuttons:SwitchSettings
+                               ThumbBackground="{StaticResource EDCR_Stroke}"
+                               ThumbStroke="{StaticResource EDCR_Stroke}"
+                               TrackBackground="{StaticResource EDCR_Background}"
+                               TrackStroke="{StaticResource EDCR_Stroke}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Indeterminate">
+                                <VisualState.Setters>
+                                    <Setter Property="SwitchSettings">
+                                        <Setter.Value>
+                                            <sfbuttons:SwitchSettings
+                                ThumbBackground="#9ACB0D"
+                                ThumbStroke="#9ACB0D"
+                                TrackBackground="#DEF991"
+                                TrackStroke="#9ACB0D"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </sfbuttons:SfSwitch>
+                <Label Text="{Binding GridCellXOrSupplyTextSupply}"
+                       VerticalOptions="Center"
+                       Margin="10,0"
+                       TextColor="{StaticResource EDCR_Text}"
+                       FontSize="15"/>
+            </HorizontalStackLayout>
+        </sfcore:SfTextInputLayout>
+
+        <!--CHOOSE COMMODITES WITH TAGS-->
+        <!--RECTANGLE AND LABEL TO DEAL SYNCFUSION GROUPBOX PROBLEM-->
+        <Rectangle Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"
+                   Stroke="{StaticResource EDCR_Stroke}" 
+                   Margin="10,5"
+                   RadiusX="5" RadiusY="5"
+                   />
+        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"
+               Text="{Binding CommoditiesListHint}"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               TextColor="{StaticResource EDCR_Text}"
+               BackgroundColor="#202020"
+               Margin="20,-6,0,0"/>
+        <sfinputs:SfComboBox x:Name="SfComboBoxCommodities" 
+                             ItemsSource="{Binding CommodityInfoList}"
+                                 Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"
                                  DisplayMemberPath="Libelle"
                                  TextMemberPath="Libelle"
                                  TokensWrapMode="Wrap"
                                  SelectionMode="Multiple"
-                                 IsClearButtonVisible="True" ClearButtonIconColor="{StaticResource EDCR_Stroke}"
-                                 DropDownIconColor="{StaticResource EDCR_Stroke}"
                                  EnableAutoSize="True"
-                                 HeightRequest="50"
-                                 >-->
-        <!--ItemsSource="{Binding CommodityInfoList}"-->
-        <!--<sfinputs:SfComboBox.TokenItemStyle>
-                    <Style TargetType="sfcore:SfChipGroup">
-                        <Setter Property="ChipTextColor" Value="{StaticResource EDCR_Stroke}"/>
-                        <Setter Property="ChipFontAttributes" Value="Bold"/>
-                        <Setter Property="CloseButtonColor" Value="{StaticResource EDCR_Stroke}"/>
-                        <Setter Property="ChipBackground" Value="{StaticResource EDCR_Background}"/>
-                        <Setter Property="ChipStroke" Value="{StaticResource EDCR_Stroke}"/>
-                        <Setter Property="ChipStrokeThickness" Value="6"/>
-                        <Setter Property="ChipCornerRadius" Value="5"/>
-                    </Style>
-                </sfinputs:SfComboBox.TokenItemStyle>-->
-        <!--</sfinputs:SfComboBox>
-        </sfcore:SfTextInputLayout>-->
+                                 BackgroundColor="{StaticResource EDCR_Background}"
+                                 Margin="20"
+                             
+                             >
+            <!--SelectionChanged="SfComboBox_SelectionChanged"-->
+            <sfinputs:SfComboBox.TokenItemStyle>
+                <Style TargetType="sfcore:SfChipGroup">
+                    <Setter Property="ChipTextColor" Value="{StaticResource EDCR_Stroke}"/>
+                    <Setter Property="ChipFontAttributes" Value="Bold"/>
+                    <Setter Property="CloseButtonColor" Value="{StaticResource EDCR_Stroke}"/>
+                    <Setter Property="ChipBackground" Value="{StaticResource EDCR_Background}"/>
+                    <Setter Property="ChipStroke" Value="{StaticResource EDCR_Stroke}"/>
+                    <Setter Property="ChipStrokeThickness" Value="6"/>
+                    <Setter Property="ChipCornerRadius" Value="5"/>
+                </Style>
+            </sfinputs:SfComboBox.TokenItemStyle>
+        </sfinputs:SfComboBox>
 
+        <!--LAUNCH BUTTON-->
         <sfbuttons:SfButton Text="{Binding LaunchButtonLibelle}" 
                             Margin="10"
-                            Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"
+                            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1"
                             Background="{StaticResource EDCR_Background}"
                             Stroke="{StaticResource EDCR_Stroke}" StrokeThickness="2"
                             TextColor="{StaticResource EDCR_Text}"
-                            HorizontalOptions="CenterAndExpand"
+                            HorizontalOptions="FillAndExpand"
                             Clicked="SfButtonLauncheResearch_Clicked"
+                            CornerRadius="5"
                             />
-                            <!--Command="{Binding LaunchResearchCommand}"-->
+        <!--Command="{Binding LaunchResearchCommand}"-->
+
+        <!--RESULT DATAGRID-->
+        <sfdatagrid:SfDataGrid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5"
+                               HorizontalOptions="Center"
+                               VerticalScrollBarVisibility="Always"
+                               x:Name="DataGridCommoditiesByStations"
+                               ItemsSource="{Binding CommoditiesByStationsForDataGrids}"
+                               AutoGenerateColumnsMode="Reset"
+                               AutoGenerateColumnsModeForCustomType="Both"
+                               NavigationMode="Cell"
+                               Background="Transparent"
+                               ItemsSourceChanged="SfDataGrid_ItemsSourceChanged"
+                               GridLinesVisibility="Both"
+                               HeaderGridLinesVisibility="Both">
+            <sfdatagrid:SfDataGrid.DefaultStyle>
+                <sfdatagrid:DataGridStyle HeaderRowBackground="{StaticResource EDCR_Stroke}" HeaderRowTextColor="White" RowBackground="{StaticResource EDCR_Background}" RowTextColor="{StaticResource EDCR_Text}"/>
+            </sfdatagrid:SfDataGrid.DefaultStyle>
+        </sfdatagrid:SfDataGrid>
+        <!--Background="red"-->
     </Grid>
 
 </ContentPage>
