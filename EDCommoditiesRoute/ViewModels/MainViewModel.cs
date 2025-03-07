@@ -134,7 +134,7 @@ namespace EDCommoditiesRoute.ViewModels
         {
             // valeur de debug
 #if DEBUG
-            startingSystemName = "volkhabe";
+            startingSystemName = "kalak";
 #endif
 
 
@@ -211,6 +211,21 @@ namespace EDCommoditiesRoute.ViewModels
                     }
                 }
 
+            }
+        }
+
+        [RelayCommand]
+        public void CommoditiesByStationsCellTapped(object p)
+        {
+            try
+            {
+                EDCommoditiesRoute.Models.CommoditiesByStationsForDataGrid a = (p as Syncfusion.Maui.DataGrid.DataGridCellTappedEventArgs).RowData as EDCommoditiesRoute.Models.CommoditiesByStationsForDataGrid;
+                String[] s = a?.Station.Split("|");
+                Clipboard.SetTextAsync(s?[1]?.Trim());
+            }
+            catch (Exception)
+            {
+                Clipboard.SetTextAsync("???");
             }
         }
         #endregion

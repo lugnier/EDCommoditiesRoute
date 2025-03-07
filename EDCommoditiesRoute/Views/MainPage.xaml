@@ -14,6 +14,7 @@
              x:Class="EDCommoditiesRoute.Views.MainPage"
              Shell.TitleColor="{StaticResource EDCR_Text}"
              Title="{Binding Title}"
+             
              >
 
     <ContentPage.BindingContext>
@@ -260,7 +261,8 @@ VerticalTextAlignment="Center"/>
                                Background="Transparent"
                                ItemsSourceChanged="SfDataGrid_ItemsSourceChanged"
                                GridLinesVisibility="Both"
-                               HeaderGridLinesVisibility="Both">
+                               HeaderGridLinesVisibility="Both"
+                               CellTappedCommand="{Binding CommoditiesByStationsCellTappedCommand}">
             <sfdatagrid:SfDataGrid.DefaultStyle>
                 <sfdatagrid:DataGridStyle HeaderRowBackground="{StaticResource EDCR_Stroke}" HeaderRowTextColor="White" RowBackground="{StaticResource EDCR_Background}" RowTextColor="{StaticResource EDCR_Text}"/>
             </sfdatagrid:SfDataGrid.DefaultStyle>

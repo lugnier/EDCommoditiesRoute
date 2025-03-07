@@ -41,7 +41,9 @@ namespace InaraHelper
                     StationsCommodities.Add(commodityInfo.Libelle, new List<InaraCommodityInfo>());
                 }
 
-                _header = $"https://inara.cz/elite/commodities/?pi1=1&pa1%5B%5D={commodityInfo.Numero}&ps1=Volkhabe&pi10=3&pi11=0&pi3=2&pi9=0&pi4=1&pi5=0&pi12=0&pi7=0&pi8=1";
+                _header = $"https://inara.cz/elite/commodities/?formbrief=1&pi1=1&pa1%5B%5D={commodityInfo.Numero}&ps1=" + initialSystem + "&pi10=3&pi11=0&pi3=1&pi9=0&pi4=0&pi5=0&pi12=0&pi7=0&pi8=1&pi14=0";
+
+                //            https://inara.cz/elite/commodities/?formbrief=1&pi1=1&pa1%5B%5D=1&ps1=volkhabe&pi10=3&pi11=0&pi3=1&pi9=0&pi4=0&pi14=0&pi5=0&pi12=0&pi7=0&pi8=1&pi13=0
 
                 HttpResponseMessage response;
                 string responseBody;

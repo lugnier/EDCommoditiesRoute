@@ -88,6 +88,7 @@
 143;Praseodymium;Metals
 142;Samarium;Metals
 46;Silver;Metals
+10487;Steel;Metals
 47;Tantalum;Metals
 108;Thallium;Metals
 109;Thorium;Metals
@@ -103,6 +104,7 @@
 56;Gallite;Minerals
 111;Goslarite;Minerals
 10248;Grandidierite;Minerals
+10486;Haematite;Minerals
 57;Indite;Minerals
 168;Jadeite;Minerals
 58;Lepidolite;Minerals

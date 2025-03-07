@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:EDCommoditiesRoute"
     xmlns:views="clr-namespace:EDCommoditiesRoute.Views"
     Shell.FlyoutBehavior="Disabled"
-    Title="EDCommoditiesRoute">
+    Title="EDCommoditiesRoute" HeightRequest="500" WidthRequest="500">
 
     <ShellContent
         Title="Home"

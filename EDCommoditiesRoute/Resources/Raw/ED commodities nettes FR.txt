@@ -73,6 +73,7 @@
 34;Stabilisateurs de combat;Médicaments
 37;Aluminium;Métaux
 46;Argent;Métaux
+10487;Acier;Métaux
 38;Béryllium;Métaux
 106;Bismuth;Métaux
 39;Cobalt;Métaux
@@ -106,6 +107,7 @@
 56;Gallite;Minéraux
 111;Goslarite;Minéraux
 10248;Grandidiérite;Minéraux
+10486;Haematite;Minéraux
 145;Hydrate de méthane;Minéraux
 147;Hydroxyde de lithium;Minéraux
 57;Indite;Minéraux
