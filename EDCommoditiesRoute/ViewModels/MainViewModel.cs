@@ -26,8 +26,8 @@ namespace EDCommoditiesRoute.ViewModels
         /// <summary>
         /// name of the starting system
         /// </summary>
-        [ObservableProperty]
-        public String startingSystemName = String.Empty;
+        //[ObservableProperty]
+        private String startingSystemName = String.Empty;
 
         /// <summary>
         /// not used (syncfusion bug)
@@ -118,17 +118,23 @@ namespace EDCommoditiesRoute.ViewModels
 
         string minCommoditiesHint_part01 = String.Empty;
         string noneText = String.Empty;
+
+        public string StartingSystemName
+        {
+            get => startingSystemName;
+            set
+            {
+                SetProperty(ref startingSystemName, value);
+                Preferences.Default.Set("StartingSystemName", value);
+            }
+        }
         #endregion
 
         #region CONSTRUCTOR
 
         public MainViewModel()
         {
-            // valeur de debug
-#if DEBUG
-            startingSystemName = "kalak";
-#endif
-
+            startingSystemName = Preferences.Default.Get("StartingSystemName", "Kalak");
 
             Title = "Ed Commodities Route";
             StartingSystemHint = "Système de départ";
