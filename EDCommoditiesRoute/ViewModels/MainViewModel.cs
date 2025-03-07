@@ -1,17 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EDCommoditiesRoute.Models;
-using InaraHelper;
 using Syncfusion.Maui.Data;
 using Syncfusion.Maui.Sliders;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EDCommoditiesRoute.ViewModels
 {

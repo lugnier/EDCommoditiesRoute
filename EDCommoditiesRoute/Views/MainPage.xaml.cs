@@ -1,16 +1,18 @@
 using EDCommoditiesRoute.Models;
 using EDCommoditiesRoute.ViewModels;
+using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.DataGrid;
-using Syncfusion.Maui.DataSource.Extensions;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace EDCommoditiesRoute.Views;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    private ILogger<MainPage> logger;
+
+    public MainPage(ILogger<MainPage> _logger)
     {
+        logger = _logger;
         InitializeComponent();
     }
 

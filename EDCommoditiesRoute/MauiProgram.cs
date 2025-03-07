@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 using Syncfusion.Maui.Core.Hosting;
 
 namespace EDCommoditiesRoute
@@ -20,6 +21,11 @@ namespace EDCommoditiesRoute
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+        //    builder.Services.AddSerilog(
+        //new LoggerConfiguration()
+        //    .WriteTo.File(Path.Combine(FileSystem.Current.AppDataDirectory, "log.txt"))
+        //    .CreateLogger();
 
             return builder.Build();
         }
