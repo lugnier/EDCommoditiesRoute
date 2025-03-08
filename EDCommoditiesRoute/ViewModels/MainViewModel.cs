@@ -276,14 +276,27 @@ namespace EDCommoditiesRoute.ViewModels
             }
         }
 
+        /// <summary>
+        /// Save to clipboard the content of the cell
+        /// </summary>
+        /// <param name="p">cell event arg (to get the cell content)</param>
         [RelayCommand]
         public void CommoditiesByStationsCellTapped(object p)
         {
             try
             {
                 EDCommoditiesRoute.Models.CommoditiesByStationsForDataGrid a = (p as Syncfusion.Maui.DataGrid.DataGridCellTappedEventArgs).RowData as EDCommoditiesRoute.Models.CommoditiesByStationsForDataGrid;
-                String[] s = a?.Station.Split("|");
-                Clipboard.SetTextAsync(s?[1]?.Trim());
+                //String[] s = a?.Station.Split("|");
+                //Clipboard.SetTextAsync(s?[1]?.Trim());
+                switch ((p as Syncfusion.Maui.DataGrid.DataGridCellTappedEventArgs).Column.MappingName)
+                {
+                    case "Station":
+                        Clipboard.SetTextAsync(a.Station);
+                        break;
+                    default:
+                        Clipboard.SetTextAsync(a.System);
+                        break;
+                }
             }
             catch (Exception)
             {
