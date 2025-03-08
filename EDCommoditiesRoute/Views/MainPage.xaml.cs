@@ -60,7 +60,12 @@ public partial class MainPage : ContentPage
 
                 DataGridCommoditiesByStations.Columns.Clear();
                 // add the header line
-                DataGridCommoditiesByStations.Columns.Add(new DataGridTextColumn { HeaderText = "Station", MappingName = "Station", ColumnWidthMode=ColumnWidthMode.Auto});
+                DataGridCommoditiesByStations.Columns.Add(new DataGridTextColumn { Width = 150, HeaderText = "Type", MappingName = "StationType", ColumnWidthMode=ColumnWidthMode.Auto});
+                DataGridCommoditiesByStations.Columns.Add(new DataGridTextColumn { Width = 140, HeaderText = "Station", MappingName = "Station", ColumnWidthMode=ColumnWidthMode.Auto});
+                DataGridCommoditiesByStations.Columns.Add(new DataGridTextColumn { Width = 150, HeaderText = "System", MappingName = "System", ColumnWidthMode=ColumnWidthMode.Auto});
+                DataGridCommoditiesByStations.Columns.Add(new DataGridTextColumn { Width = 70, HeaderText = "Pad", MappingName = "Pad", ColumnWidthMode=ColumnWidthMode.Auto});
+                DataGridCommoditiesByStations.Columns.Add(new DataGridTextColumn { Width = 100, HeaderText = "Sl", MappingName = "SL", ColumnWidthMode=ColumnWidthMode.Auto});
+                DataGridCommoditiesByStations.Columns.Add(new DataGridTextColumn { Width = 100, HeaderText = "Ly", MappingName = "LY", ColumnWidthMode=ColumnWidthMode.Auto});
 
                 // add header of each column and the mapping between binding and column
                 int Counter = 1;

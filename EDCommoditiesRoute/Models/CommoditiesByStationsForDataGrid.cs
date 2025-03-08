@@ -2,7 +2,12 @@
 {
     public class CommoditiesByStationsForDataGrid
     {
+        public String StationType { get; set; }
+        public String System { get; set; }
         public String Station { get; set; }
+        public String Pad { get; set; }
+        public String SL { get; set; }
+        public String LY { get; set; }
         public String Commod01 { get; set;}
         public String Commod02 { get; set;}
         public String Commod03 { get; set;}

@@ -74,8 +74,61 @@ namespace EDCommoditiesRoute.ViewModels
         /// <summary>
         /// value of the minimum amount of commodity in stations
         /// </summary>
+        private Int32 minCommoditiesValue;
+        public Int32 MinCommoditiesValue
+        {
+            get => minCommoditiesValue;
+            set
+            {
+                SetProperty(ref minCommoditiesValue, value);
+                Preferences.Default.Set("MinCommoditiesValue", value);
+            }
+        }
+
         [ObservableProperty]
-        public Int32 minCommoditiesValue;
+        public String padSizeHint;
+
+        private Boolean padS;
+        public Boolean PadS
+        {
+            get => padS;
+            set
+            {
+                SetProperty(ref padS, value);
+                if (value)
+                {
+                    Preferences.Default.Set("PadSize", "S");
+                }
+            }
+        }
+
+        private Boolean padM;
+        public Boolean PadM
+        {
+            get => padM;
+            set
+            {
+                SetProperty(ref padM, value);
+                if (value)
+                {
+                    Preferences.Default.Set("PadSize", "M");
+                }
+            }
+        }
+
+        private Boolean padL;
+        public Boolean PadL
+        {
+            get => padL;
+            set
+            {
+                SetProperty(ref padL, value);
+                if (value)
+                {
+                    Preferences.Default.Set("PadSize", "L");
+                }
+            }
+        }
 
         /// <summary>
         /// data to fill the datagrid
@@ -128,6 +181,7 @@ namespace EDCommoditiesRoute.ViewModels
                 Preferences.Default.Set("StartingSystemName", value);
             }
         }
+
         #endregion
 
         #region CONSTRUCTOR
@@ -135,6 +189,15 @@ namespace EDCommoditiesRoute.ViewModels
         public MainViewModel()
         {
             startingSystemName = Preferences.Default.Get("StartingSystemName", "Kalak");
+            //String s = Preferences.Default.Get("PadSize", "");
+            PadS = Preferences.Default.Get("PadSize", "") == "S";
+            PadM = Preferences.Default.Get("PadSize", "") == "M";
+            PadL = Preferences.Default.Get("PadSize", "") == "L";
+            if (!PadS && !PadM && !PadL)
+            {
+                PadM = true;
+            }
+            MinCommoditiesValue = Preferences.Default.Get("MinCommoditiesValue", 0);
 
             Title = "Ed Commodities Route";
             StartingSystemHint = "Système de départ";
@@ -154,9 +217,10 @@ namespace EDCommoditiesRoute.ViewModels
             CommodityInfoList = new ObservableCollection<CommodityInfo>();
             selectedCommodityInfoList = new();
 
-            MinCommoditiesValue = 100;
             minCommoditiesHint_part01 = "Minimum en station";
             MinCommoditiesHint = $"{minCommoditiesHint_part01} : {MinCommoditiesValue}";
+
+            PadSizeHint = "Taille minimum de Pad";
             noneText = "Aucun";
 
             LoadCommodities();
@@ -180,7 +244,7 @@ namespace EDCommoditiesRoute.ViewModels
             // Get all the user selections
             foreach (CommodityInfo item in SelectedCommodityInfoList)
             {
-                await InaraHelper.InaraHelper.GetCommodities(StartingSystemName, item);
+                await InaraHelper.InaraHelper.GetCommodities(StartingSystemName, item, PadS ? "S" : PadM ? "M" : "L", MinCommoditiesValue);
             }
 
             // launch the creation of the grid
@@ -295,7 +359,13 @@ namespace EDCommoditiesRoute.ViewModels
             {
                 cbsfdg = new CommoditiesByStationsForDataGrid();
                 // add the station in the first column
-                cbsfdg.Station = item.Key;
+                //cbsfdg.Station = item.Key;
+                cbsfdg.StationType = item.Value?[0]?.InaraCommodityInfo?.StationType ?? "???";
+                cbsfdg.Station = item.Value?[0]?.InaraCommodityInfo?.Station ?? "???";
+                cbsfdg.System = item.Value?[0]?.InaraCommodityInfo?.System ?? "???";
+                cbsfdg.Pad = item.Value?[0]?.InaraCommodityInfo?.Pad ?? "???";
+                cbsfdg.SL = item.Value?[0]?.InaraCommodityInfo?.DistanceStation.ToString() ?? "???";
+                cbsfdg.LY = item.Value?[0]?.InaraCommodityInfo?.DistanceSystem.ToString() ?? "???";
 
                 // if the user wants the supply
                 if (GridCellXOrSupplyIsSupply)

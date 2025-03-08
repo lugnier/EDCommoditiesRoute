@@ -23,8 +23,8 @@
 
             // Set the initial size of the window
 #if WINDOWS
-            window.Width = 1200;
-            window.Height = 800;
+            window.Width = 1400;
+            window.Height = 1000;
 #endif
 
             return window;

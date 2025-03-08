@@ -20,5 +20,6 @@ namespace EDCommoditiesRoute.Models
         public String Updated { get; set; }
         public String Station { get; set; }
         public String System { get; set; }
+        public String StationType { get; set; }
     }
 }

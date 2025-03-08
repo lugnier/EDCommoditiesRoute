@@ -1,15 +1,28 @@
 ﻿using EDCommoditiesRoute.Models;
 using HtmlAgilityPack;
+using System.Diagnostics;
 
 namespace InaraHelper
 {
     public class InaraHelper
     {
         internal static HttpClient Client = new HttpClient() { Timeout = TimeSpan.FromSeconds(10) };
+        //pi1  : 1 ???
+        //pi3  : x pad 3=large 2=medium 1=small
+        //pi4  : 0 use surface station 0:yes (odyssey) 1:no 2:yes (without odyssey)
+        //pi5  : 0 max price age in hours 0=tous sinon 1, 8, 16, 24, 48, 72, 168, 336, 720, 4320
+        //pi7  : x max demand supply / demand 0, 100, 500, 1000, 2000, 5000, 10000, 50000
+        //pi8  : 1 FC 0:yes, 1:no 2:yes with docking access updated recently
+        //pi9  : 0 max station distance in ls 100, 500, 1000, 2000, 5000, 10000, 15000, 20000, 25000, 50000, 100000
+        //pi10 : 3 ???
+        //pi11 : 0 distance en ly Max star system distance 0=tous sinon 50, 100, 250, 500, 1000, 5000
+        //pi12 : 0 price condition in % 0, 5, 10, 25, 50 et -1 pour anarchie
+        //pi13 : 0 include strongold carrier 0:yes 1:no 2:only pledge power
+        //pi14 : 0 power
 
         //private static String _header = "https://inara.cz/commodities/";
         //private static String _header = "https://inara.cz/elite/commodities-list/";
-        private static String _header = "https://inara.cz/elite/commodities/?pi1=1&pa1%5B%5D=139&ps1=Volkhabe&pi10=3&pi11=0&pi3=2&pi9=0&pi4=1&pi5=0&pi12=0&pi7=0&pi8=1";
+        private static String _header = ""; // https://inara.cz/elite/commodities/?pi1=1&pa1%5B%5D=139&ps1=Volkhabe&pi10=3&pi11=0&pi3=2&pi9=0&pi4=1&pi5=0&pi12=0&pi7=0&pi8=1";
         private static String _headerSystem = "https://www.edsm.net/api-system-v1/";
         private static HttpClient ClientEdsmSystem = new HttpClient() { Timeout = TimeSpan.FromSeconds(30), BaseAddress = new Uri(_headerSystem) };
         private const string WhitelistedTableClass = "whitelisted-table";
@@ -20,7 +33,7 @@ namespace InaraHelper
         /// init the lis
         /// </summary>
         /// <returns></returns>
-        public static async Task GetCommodities(String initialSystem, CommodityInfo commodityInfo)
+        public static async Task GetCommodities(String initialSystem, CommodityInfo commodityInfo, String PadSize, Int32 MinSupply)
         {
             try
             {
@@ -35,9 +48,24 @@ namespace InaraHelper
                     StationsCommodities.Add(commodityInfo.Libelle, new List<InaraCommodityInfo>());
                 }
 
-                _header = $"https://inara.cz/elite/commodities/?formbrief=1&pi1=1&pa1%5B%5D={commodityInfo.Numero}&ps1=" + initialSystem + "&pi10=3&pi11=0&pi3=1&pi9=0&pi4=0&pi5=0&pi12=0&pi7=0&pi8=1&pi14=0";
+                _header = $"https://inara.cz/elite/commodities/?formbrief=1&pi1=1&pa1%5B%5D={commodityInfo.Numero}&ps1=" + initialSystem + "&pi10=3&pi11=0&pi9=0&pi4=0&pi5=0&pi12=0&pi8=1&pi14=0";
 
-                //            https://inara.cz/elite/commodities/?formbrief=1&pi1=1&pa1%5B%5D=1&ps1=volkhabe&pi10=3&pi11=0&pi3=1&pi9=0&pi4=0&pi14=0&pi5=0&pi12=0&pi7=0&pi8=1&pi13=0
+                // Pad Size
+                if (PadSize == "S")
+                {
+                    _header += "&pi3=1";
+                }
+                else if (PadSize == "M")
+                {
+                    _header += "&pi3=2";
+                }
+                else if (PadSize == "L")
+                {
+                    _header += "&pi3=3";
+                }
+
+                // Min Supply
+                _header += "&pi7=" + MinSupply;
 
                 HttpResponseMessage response;
                 string responseBody;
@@ -56,8 +84,8 @@ namespace InaraHelper
                 var tableRuntime = nodes.FirstOrDefault()?.SelectSingleNode("//table");
                 var HTMLTableTRList = from table in doc.DocumentNode.SelectNodes("//table").Cast<HtmlNode>()
                                       from row in table.SelectNodes("//tr").Cast<HtmlNode>()
-                                      from cell in row.SelectNodes("th|td").Cast<HtmlNode>()
-                                      select new { Table_Name = table.Id, Cell_Text = cell.InnerText };
+                                      from cell in row.SelectNodes("th|td|class").Cast<HtmlNode>()
+                                      select new { Table_Name = table.Id, Cell_Text = cell.InnerText, C = cell };
 
                 Int32 price = 0;
                 Double doubleValue = 0;
@@ -69,6 +97,62 @@ namespace InaraHelper
                 for (int i = 7; i < HTMLTableTRList.Count(); i = i + 7)
                 {
                     cv = new InaraCommodityInfo();
+
+                    // station type
+                    try
+                    {
+                        Int32 iStationType = Int32.Abs(Int32.Parse(HTMLTableTRList.ElementAt(i).C.InnerHtml.Split("background-position:")[1].Split("px")[0]));
+                        if (iStationType == 13)
+                        {
+                            cv.StationType = "CORIOLIS";
+                        }
+                        else if (iStationType == 26) 
+                        {
+                            cv.StationType = "OUTP CONST";
+                        }
+                        else if (iStationType == 39)
+                        {
+                            cv.StationType = "OUTP CIV";
+                        }
+                        else if (iStationType == 143)
+                        {
+                            cv.StationType = "OUTP SCI UC";
+                        }
+                        else if (iStationType == 156)
+                        {
+                            cv.StationType = "ORBIS";
+                        }
+                        else if (iStationType == 169)
+                        {
+                            cv.StationType = "OCELLUS";
+                        }
+                        else if (iStationType == 182)
+                        {
+                            cv.StationType = "SURF PORT";
+                        }
+                        else if (iStationType == 247)
+                        {
+                            cv.StationType = "ASTER";
+                        }
+                        else if (iStationType == 481)
+                        {
+                            cv.StationType = "STRONGHOLD";
+                        }
+                        else if (iStationType == 780)
+                        {
+                            cv.StationType = "SURF STAT";
+                        }
+                        else 
+                        {
+                            cv.StationType = "???";
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Debugger.Break();
+                    }
+
+
                     if (HTMLTableTRList.ElementAt(i).Cell_Text == String.Empty)
                     {
                         i++;
@@ -144,7 +228,9 @@ namespace InaraHelper
                     || (item >='a' && item <='z') 
                     || (item >= 'A' && item <= 'Z') 
                     || item == '|' 
-                    || item == ' ')
+                    || item == ' '
+                    || item == '+'
+                    || item == '-')
                 {
                     temp += item;
                 }
